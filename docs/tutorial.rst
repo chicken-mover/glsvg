@@ -9,7 +9,7 @@ A really simple example ::
     # ...
 
     # load svg file
-    svgObj = glsvg.SVG(filename)
+    svgObj = glsvg.SVGDoc(filename)
 
     # draw svg file
     svgObj.draw(x,y)
