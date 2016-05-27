@@ -1,4 +1,6 @@
-from svg_parser_utils import *
+from __future__ import absolute_import, print_function, unicode_literals, division
+
+from glsvg.svg_parser_utils import *
 import OpenGL.GL as gl
 import math
 
@@ -37,6 +39,9 @@ class vec2(object):
         return vec2(self.x * scale, self.y * scale)
 
     def __div__(self, scale):
+        return self.__truediv__(scale)
+
+    def __truediv__(self, scale):
         return vec2(self.x / scale, self.y / scale)
 
     def __eq__(self, other):

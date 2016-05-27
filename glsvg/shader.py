@@ -1,3 +1,5 @@
+from __future__ import absolute_import, print_function, unicode_literals, division
+
 import OpenGL.GL as gl
 
 active_shader = None
@@ -29,16 +31,16 @@ class Shader(object):
         return_val = gl.glGetShaderiv(self.shader_object, gl.GL_COMPILE_STATUS)
 
         if return_val:
-            print "%s compiled successfuly." % (self.name)
+            print("%s compiled successfuly." % (self.name))
         else:
-            print "Compile failed on shader %s: " % (self.name)
-            print gl.glGetShaderInfoLog(self.shader_object)
+            print("Compile failed on shader %s: " % (self.name))
+            print(gl.glGetShaderInfoLog(self.shader_object))
 
     def info_log(self):
         return gl.glGetProgramInfoLog(self.shader_object)
 
     def print_info_log(self):
-        print self.info_log()
+        print(self.info_log())
 
 
 class UniformVar(object):
@@ -76,7 +78,7 @@ class Program(object):
     def detach(self, shader):
         self.shaders.remove(shader)
         gl.glDetachShader(self.program_object, shader.shader_object)
-        print "Shader detached"
+        print("Shader detached")
     
     def link(self):
         gl.glLinkProgram(self.program_object)
@@ -137,11 +139,11 @@ class Program(object):
             self.uniform_vars[name].set()
     
     def set_vars(self):
-        for name, var in self.uniform_vars.iteritems():
+        for name, var in self.uniform_vars.items():
             var.set()
     
     def print_info_log(self):
-        print gl.glGetInfoLog(self.program_object)
+        print(gl.glGetInfoLog(self.program_object))
 
 
 def make_ps_from_src(name, src):

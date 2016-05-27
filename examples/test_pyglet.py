@@ -1,7 +1,10 @@
 #! usr/bin/env python
+from __future__ import absolute_import, print_function, unicode_literals, division
+
 import sys
 import os
 sys.path.append(os.path.abspath('../'))
+
 
 
 import pyglet
@@ -66,7 +69,7 @@ class SVGWindow(pyglet.window.Window):
             next = self.filelist.index(prevFile)+dir
             next %= len(self.filelist)
         self.filename = os.path.join('../svgs', self.filelist[next])
-        print 'Parsing', self.filename
+        print('Parsing', self.filename)
         self.svg = glsvg.SVGDoc(self.filename)
         self.svg.anchor_x, self.svg.anchor_y = 'center', 'center'
         self.statslabel.text = "total tris: " + str(glsvg.graphics.triangles_drawn) + ", fill-tris: " + str(self.svg.n_tris) + ", lines: " + str(self.svg.n_lines)

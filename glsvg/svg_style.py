@@ -1,5 +1,7 @@
-from svg_constants import DEFAULT_FILL, DEFAULT_STROKE
-from svg_parser_utils import *
+from __future__ import absolute_import, print_function, unicode_literals, division
+
+from glsvg.svg_constants import DEFAULT_FILL, DEFAULT_STROKE
+from glsvg.svg_parser_utils import *
 
 class SVGStyle(object):
 

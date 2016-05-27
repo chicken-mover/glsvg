@@ -1,6 +1,6 @@
 __all__ = ['svg', 'matrix']
 
-from svg import SVGDoc, SVGConfig
+from glsvg.svg import SVGDoc, SVGConfig
 
-from svg_path import SVGPath, SVGGroup, SVGUse
-from svg_style import SVGStyle
+from glsvg.svg_path import SVGPath, SVGGroup, SVGUse
+from glsvg.svg_style import SVGStyle

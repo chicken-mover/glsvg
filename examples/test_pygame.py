@@ -1,3 +1,5 @@
+from __future__ import absolute_import, print_function, unicode_literals, division
+
 import pygame
 import sys
 import os
@@ -28,7 +30,7 @@ class App:
             next = self.filelist.index(prevFile)+dir
             next %= len(self.filelist)
         self.filename = os.path.join('../svgs', self.filelist[next])
-        print 'Parsing', self.filename
+        print('Parsing', self.filename)
         self.svg = glsvg.SVGDoc(self.filename)
         self.svg.anchor_x, self.svg.anchor_y = self.svg.width/2, self.svg.height/2
 

@@ -1,6 +1,8 @@
+from __future__ import absolute_import, print_function, unicode_literals, division
+
 __author__ = 'Ian'
 import OpenGL.GL as gl
-import graphics
+from glsvg import graphics
 
 
 class Texture2D:
@@ -10,7 +12,7 @@ class Texture2D:
         self.width = w
         self.height = h
         self.id = gl.glGenTextures(1)
-        print "texture id", self.id
+        print("texture id", self.id)
 
         self.bind()
         gl.glTexEnvf(gl.GL_TEXTURE_ENV, gl.GL_TEXTURE_ENV_MODE, gl.GL_MODULATE)
@@ -24,7 +26,7 @@ class Texture2D:
 
         gl.glTexImage2D(gl.GL_TEXTURE_2D, 0, gl.GL_RGBA8, self.width, self.height, 0, gl.GL_RGBA, gl.GL_UNSIGNED_BYTE, None)
 
-        print "Tex OK? ", gl.glGetError() == gl.GL_NO_ERROR
+        print("Tex OK? ", gl.glGetError() == gl.GL_NO_ERROR)
         self.unbind()
 
     def resize(self, w, h):
@@ -93,10 +95,10 @@ class RenderTarget:
     def check_status(self):
         status = gl.glCheckFramebufferStatus(gl.GL_FRAMEBUFFER)
         if status == gl.GL_FRAMEBUFFER_COMPLETE:
-            print "Framebuffer complete"
+            print("Framebuffer complete")
             return True
         else:
-            print "Render target error: " + str(status)
+            print("Render target error: " + str(status))
             return False
 
     def blit(self):
@@ -138,14 +140,14 @@ class CanvasManager:
     instance = None
 
     def __init__(self):
-        print "Initializing canvas manager"
+        print("Initializing canvas manager")
         self.canvas = {}
         vp = list(gl.glGetFloatv(gl.GL_VIEWPORT))
         self.w = int(vp[2])
         self.h = int(vp[3])
 
     def resize(self, w, h):
-        print "resizing", w, h
+        print("resizing", w, h)
         self.w = w
         self.h = h
 

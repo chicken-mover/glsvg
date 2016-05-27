@@ -1,21 +1,23 @@
+from __future__ import absolute_import, print_function, unicode_literals, division
+
 import math
 import re
 import string
 
-import graphics
-import lines
+from glsvg import graphics
+from glsvg import lines
 import traceback
 
 import OpenGL.GL as gl
 
-from svg_parser_utils import parse_float, parse_list, get_fns
-from svg_path_builder import SVGPathBuilder
+from glsvg.svg_parser_utils import parse_float, parse_list, get_fns
+from glsvg.svg_path_builder import SVGPathBuilder
 
-from glutils import DisplayListGenerator
-import svg_style
-from vector_math import Matrix, BoundingBox, vec2
-from svg_constants import XMLNS
-from render_target import CanvasManager
+from glsvg.glutils import DisplayListGenerator
+from glsvg import svg_style
+from glsvg.vector_math import Matrix, BoundingBox, vec2
+from glsvg.svg_constants import XMLNS
+from glsvg.render_target import CanvasManager
 
 
 class SVGContainer(object):
@@ -255,7 +257,7 @@ class SVGPath(SVGRenderableElement):
             self.svg.n_lines += len(loop) - 1
             loop_plus = []
 
-            for i in xrange(len(loop) - 1):
+            for i in range(len(loop) - 1):
                 loop_plus += [loop[i], loop[i+1]]
 
             if isinstance(stroke, str):

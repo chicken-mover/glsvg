@@ -1,6 +1,8 @@
+from __future__ import absolute_import, print_function, unicode_literals, division
+
 import math
-import graphics
-from vector_math import vec2, line_length, radian, intersection
+from glsvg import graphics
+from glsvg.vector_math import vec2, line_length, radian, intersection
 
 
 class LineSegment(object):
@@ -177,7 +179,7 @@ def split_line_by_pattern(points, pattern):
     is_whitespace = False
     current_line = []
 
-    for p in xrange(1, len(points)):
+    for p in range(1, len(points)):
         start = vec2(points[p-1])
         end = vec2(points[p])
         normal = (end - start).normalized()
@@ -304,7 +306,7 @@ def draw_polyline(points, w, color, line_cap='butt', join_type='miter', miter_li
         second = line.lower_v if not swap else line.upper_v
 
         i = 0
-        for i in xrange(max(len(first), len(second))):
+        for i in range(max(len(first), len(second))):
             if i<len(first):
                 vertices.extend(first[i].tolist())
             if i<len(second):
