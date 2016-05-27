@@ -309,8 +309,6 @@ class SVGDoc(SVGContainer):
                 of two floats (xscale, yscale).
 
         """
-        #CanvasManager.inst().update()
-        #bg = CanvasManager.inst().get('BackgroundImage')
 
         with CurrentTransform():
             gl.glTranslatef(x, y, z)
@@ -324,10 +322,7 @@ class SVGDoc(SVGContainer):
             if self._a_x or self._a_y:
                 gl.glTranslatef(-self._a_x, -self._a_y, 0)
 
-            #with bg:
-            gl.glClear(gl.GL_COLOR_BUFFER_BIT | gl.GL_DEPTH_BUFFER_BIT)
             self.disp_list()
-        #bg.blit()
 
     def prerender_defs(self):
         gl.glEnable(gl.GL_BLEND)
